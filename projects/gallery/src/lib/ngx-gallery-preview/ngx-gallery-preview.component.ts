@@ -467,6 +467,12 @@ export class NgxGalleryPreviewComponent implements OnInit, OnDestroy, OnChanges 
     });
   }
 
+  onImageError(): void {
+    this.loading = false;
+    this.showSpinner = false;
+    this.previewImage.nativeElement.onload = null;
+  }
+
   private isLoaded(img): boolean {
     if (!img.complete) {
       return false;

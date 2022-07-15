@@ -29,7 +29,7 @@
          (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()"
          (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)"
          [class.ngx-gallery-active]="!loading" [class.animation]="animation" [class.ngx-gallery-grab]="canDragOnZoom()"
-         [style.transform]="getTransform()" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'"/>
+         [style.transform]="getTransform()" [style.left]="positionLeft + 'px'" [style.top]="positionTop + 'px'" (error)="onImageError()"/>
     <video *ngIf="src && type === 'video'"  #previewImage controls style="width: 100%; height: 100%;"
     class="ngx-gallery-preview-img ngx-gallery-center"
     (click)="$event.stopPropagation()" (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)" (touchstart)="mouseDownHandler($event)"
