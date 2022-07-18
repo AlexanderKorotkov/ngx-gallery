@@ -1,8 +1,8 @@
 {
   "name": "@manderlai/ngx-gallery",
-  "version": "0.0.4",
-  "description": "A simple responsive native gallery component for Angular 8+ and 13+.",
-  "author": "Andrey Kolkov <a.kolkov@gmail.com>",
+  "version": "0.0.5",
+  "description": "A simple responsive native gallery component for Angular 8+ and 13+. With image error handler",
+  "author": "Alexander Korotkov <manderlai87@gmail.com>",
   "repository": "https://github.com/AlexanderKorotkov/ngx-gallery",
   "license": "MIT",
   "private": false,

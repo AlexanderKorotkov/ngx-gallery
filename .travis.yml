@@ -29,10 +29,10 @@ before_deploy:
   - cd dist/gallery
 deploy:
   provider: npm
-  email: a.kolkov@gmail.com
+  email: manderlai87@gmail.com
   api_token: $NPM_TOKEN
   tag: latest
   edge: true
   on:
     tags: true
-    repo: kolkov/ngx-gallery
+    repo: manderlai/ngx-gallery

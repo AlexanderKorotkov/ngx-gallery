@@ -1,5 +1,6 @@
 # NgxGallery
-A simple native gallery component for Angular 8+ and 13+.
+A simple native gallery component for Angular 8+ and 13+ <br />
+With image error handler.
 
 [![npm version](https://badge.fury.io/js/@manderlai%2Fngx-gallery.svg)](https://badge.fury.io/js/@manderlai%2Fngx-gallery)
 ## Important info
@@ -8,9 +9,9 @@ This package was forked from - [@kolkov/ngx-gallery](https://www.npmjs.com/packa
 
 ## What was changed
 
-Added - (error) image handler in case when image could not be loaded.
-Added - defaultErrorImage option to pass default  error image
-Added - errorImage option in galleryImages array to specify error image for each image if we need
+Added - `<img (error)='errorHandler()'>` error image handler to stop loader icon and show error image if needed<br />
+Added - `defaultErrorImage` option to pass default  error image <br />
+Added - `errorImage` option to `galleryImages` array to specify image Url for each image if needed
 
 ### Installation
 
@@ -24,9 +25,9 @@ where
 
 ```
 import {Component, OnInit} from '@angular/core';
-import {NgxGalleryOptions} from '@kolkov/ngx-gallery';
-import {NgxGalleryImage} from '@kolkov/ngx-gallery';
-import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';
+import {NgxGalleryOptions} from '@manderlai/ngx-gallery';
+import {NgxGalleryImage} from '@manderlai/ngx-gallery';
+import {NgxGalleryAnimation} from '@manderlai/ngx-gallery';
 
 @Component({
   selector: 'app-root',
