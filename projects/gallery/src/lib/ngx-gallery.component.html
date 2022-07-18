@@ -12,9 +12,9 @@
                      [showDescription]="currentOptions?.imageDescription" [bullets]="currentOptions?.imageBullets"
                      (imageClick)="openPreview($event)" (activeChange)="selectFromImage($event)" (animating)="setAnimating($event)"></ngx-gallery-image>
 
-  <ngx-gallery-thumbnails *ngIf="currentOptions?.thumbnails" [style.marginTop]="getThumbnailsMarginTop()"
+  <ngx-gallery-thumbnails *ngIf="currentOptions?.thumbnails" [style.marginTop]="getThumbnailsMarginTop()" [errorImages]="errorImages"
                           [style.marginBottom]="getThumbnailsMarginBottom()" [style.height]="getThumbnailsHeight()"
-                          [images]="smallImages" [isAnimating]="isAnimating" [links]="currentOptions?.thumbnailsAsLinks ? links : []"
+                          [images]="smallImages" [errorImages]="errorImages" [isAnimating]="isAnimating" [links]="currentOptions?.thumbnailsAsLinks ? links : []"
                           [labels]="labels" [linkTarget]="currentOptions?.linkTarget" [selectedIndex]="selectedIndex"
                           [columns]="currentOptions?.thumbnailsColumns" [rows]="currentOptions?.thumbnailsRows"
                           [margin]="currentOptions?.thumbnailMargin" [arrows]="currentOptions?.thumbnailsArrows"
@@ -29,7 +29,7 @@
                           (activeChange)="selectFromThumbnails($event)" [ngClass]="currentOptions?.thumbnailClasses"></ngx-gallery-thumbnails>
 
   <ngx-gallery-preview [images]="bigImages" [descriptions]="descriptions"
-                       [showDescription]="currentOptions?.previewDescription"
+                       [showDescription]="currentOptions?.previewDescription" [errorImages]="errorImages"
                        [arrowPrevIcon]="currentOptions?.arrowPrevIcon" [arrowNextIcon]="currentOptions?.arrowNextIcon"
                        [closeIcon]="currentOptions?.closeIcon" [fullscreenIcon]="currentOptions?.fullscreenIcon"
                        [spinnerIcon]="currentOptions?.spinnerIcon" [arrows]="currentOptions?.previewArrows"

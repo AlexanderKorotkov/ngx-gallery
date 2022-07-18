@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-gallery": {
+    "@manderlai/ngx-gallery": {
       "projectType": "library",
       "root": "projects/gallery",
       "sourceRoot": "projects/gallery/src",

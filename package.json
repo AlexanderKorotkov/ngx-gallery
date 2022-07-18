@@ -1,21 +1,21 @@
 {
-  "name": "@kolkov/ngx-gallery",
-  "version": "2.0.1",
+  "name": "@manderlai/ngx-gallery",
+  "version": "0.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration production",
     "test": "ng test",
-    "lint:lib": "ng lint @kolkov/ngx-gallery",
+    "lint:lib": "ng lint ngx-gallery",
     "e2e": "ng e2e",
-    "build-watch:lib": "ng build @kolkov/ngx-gallery --watch",
-    "test:lib": "ng test @kolkov/ngx-gallery",
-    "build:lib": "ng build --configuration production ngx-gallery",
+    "build-watch:lib": "ng build @manderlai/ngx-gallery --watch",
+    "test:lib": "ng test @manderlai/ngx-gallery",
+    "build:lib": "ng build --configuration production @manderlai/ngx-gallery",
     "publish:lib": "npm run copy:readme && npm run copy:changelog && npm run copy:license && npm publish ./dist/gallery",
     "copy:readme": "cpx README.md dist/gallery",
     "copy:changelog": "cpx CHANGELOG.md dist/gallery",
     "copy:license": "cpx LICENSE dist/gallery",
-    "test-ci": "ng test @kolkov/ngx-gallery --code-coverage --no-watch --no-progress --browsers=ChromeHeadless"
+    "test-ci": "ng test @manderlai/ngx-gallery --code-coverage --no-watch --no-progress --browsers=ChromeHeadless"
   },
   "private": false,
   "dependencies": {

@@ -42,6 +42,8 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
   @Output() previewClose = new EventEmitter();
   @Output() previewChange = new EventEmitter<{ index: number; image: NgxGalleryImage; }>();
 
+  defaultErrorImage: string;
+  errorImages: string[] | SafeResourceUrl[];
   smallImages: string[] | SafeResourceUrl[];
   mediumImages: NgxGalleryOrderedImage[];
   bigImages: string[] | SafeResourceUrl[];
@@ -280,11 +282,13 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     );
     this.smallImages = this.images.map((img) => img.small as string);
     this.mediumImages = this.images.map((img, i) => new NgxGalleryOrderedImage({
-      src: img.medium,
+      src: img.medium as string,
+      errorImage: img.errorImage ? img.errorImage as string : this.currentOptions.defaultErrorImage as string,
       type: img.type,
       index: i
     }));
     this.bigImages = this.images.map((img) => img.big as string);
+    this.errorImages = this.images.map((img) => img.errorImage ? img.errorImage : this.currentOptions.defaultErrorImage as string);
     this.descriptions = this.images.map((img) => img.description as string);
     this.links = this.images.map((img) => img.url as string);
     this.labels = this.images.map((img) => img.label as string);
@@ -321,7 +325,6 @@ export class NgxGalleryComponent implements OnInit, DoCheck, AfterViewInit {
     this.options
       .filter((opt) => opt.breakpoint === undefined || opt.breakpoint >= this.breakpoint)
       .map((opt) => this.combineOptions(this.currentOptions, opt));
-
     this.width = this.currentOptions.width as string;
     this.height = this.currentOptions.height as string;
   }

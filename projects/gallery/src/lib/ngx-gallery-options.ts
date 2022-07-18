@@ -14,6 +14,7 @@ export interface INgxGalleryOptions {
     linkTarget?: string;
     lazyLoading?: boolean;
     image?: boolean;
+    defaultErrorImage?: string;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
@@ -90,6 +91,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
     linkTarget?: string;
     lazyLoading?: boolean;
     image?: boolean;
+    defaultErrorImage?: string;
     imagePercent?: number;
     imageArrows?: boolean;
     imageArrowsAutoHide?: boolean;
@@ -157,7 +159,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
 
     constructor(obj: INgxGalleryOptions) {
 
-        const preventDefaults = obj.breakpoint === undefined ? false : true;
+        const preventDefaults = obj.breakpoint !== undefined;
 
         function use<T>(source: T, defaultValue: T): T {
             return obj && (source !== undefined || preventDefaults) ? source : defaultValue;
@@ -173,6 +175,7 @@ export class NgxGalleryOptions implements INgxGalleryOptions {
         this.lazyLoading = use(obj.lazyLoading, true);
 
         this.image = use(obj.image, true);
+        this.defaultErrorImage = use(obj.defaultErrorImage, null);
         this.imagePercent = use(obj.imagePercent, 75);
         this.imageArrows = use(obj.imageArrows, true);
         this.imageArrowsAutoHide = use(obj.imageArrowsAutoHide, false);

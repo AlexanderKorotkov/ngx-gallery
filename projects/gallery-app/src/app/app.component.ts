@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {NgxGalleryOptions} from '@kolkov/ngx-gallery';
-import {NgxGalleryImage} from '@kolkov/ngx-gallery';
-import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';
+import {NgxGalleryOptions} from '@manderlai/ngx-gallery';
+import {NgxGalleryImage} from '@manderlai/ngx-gallery';
+import {NgxGalleryAnimation} from '@manderlai/ngx-gallery';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit{
         arrowPrevIcon: 'fa fa-chevron-left',
         arrowNextIcon: 'fa fa-chevron-right',
         imageAnimation: NgxGalleryAnimation.Slide,
+        defaultErrorImage: 'assets/img/missing-image.svg',
         imageSwipe: true
       },
       // max-width 800
@@ -46,9 +47,9 @@ export class AppComponent implements OnInit{
 
     this.galleryImages = [
       {
-        small: 'assets/img/gallery/1-small.jpeg',
-        medium: 'assets/img/gallery/1-medium.jpeg',
-        big: 'assets/img/gallery/1-big.jpeg'
+        small: 'assets/img/gallery/1-smadll.jpeg',
+        medium: 'assets/img/gallery/1-medsium.jpeg',
+        big: 'assets/img/gallery/1-bisg.jpeg'
       },
       {
         small: 'assets/img/gallery/2-small.jpeg',

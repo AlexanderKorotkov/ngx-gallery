@@ -40,6 +40,7 @@ export class NgxGalleryPreviewComponent implements OnInit, OnDestroy, OnChanges 
   index = 0;
 
   @Input() images: string[] | SafeResourceUrl[];
+  @Input() errorImages: string | SafeResourceUrl[];
   @Input() descriptions: string[];
   @Input() showDescription: boolean;
   @Input() arrows: boolean;
@@ -273,10 +274,12 @@ export class NgxGalleryPreviewComponent implements OnInit, OnDestroy, OnChanges 
   }
 
   getSafeUrl(image: string): SafeUrl {
+    if (!image) {return null}
     return this.sanitization.bypassSecurityTrustUrl(image);
   }
 
   getFileType(fileSource: string): string {
+    if (!fileSource) {return null}
     return this.helperService.getFileType(fileSource);
   }
 
@@ -471,6 +474,7 @@ export class NgxGalleryPreviewComponent implements OnInit, OnDestroy, OnChanges 
     this.loading = false;
     this.showSpinner = false;
     this.previewImage.nativeElement.onload = null;
+    this.src = this.getSafeUrl(this.errorImages[this.index] as string);
   }
 
   private isLoaded(img): boolean {

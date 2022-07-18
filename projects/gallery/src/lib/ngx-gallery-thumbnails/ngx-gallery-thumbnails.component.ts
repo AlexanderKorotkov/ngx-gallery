@@ -10,7 +10,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {DomSanitizer, SafeResourceUrl, SafeStyle} from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeStyle, SafeUrl } from '@angular/platform-browser';
 import {NgxGalleryService} from '../ngx-gallery.service';
 import {NgxGalleryAction} from '../ngx-gallery-action';
 import {NgxGalleryOrder} from '../ngx-gallery-order';
@@ -30,6 +30,7 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
   minStopIndex = 0;
 
   @Input() images: string[] | SafeResourceUrl[];
+  @Input() errorImages: string[] | SafeResourceUrl[];
   @Input() isAnimating: boolean;
   @Input() links: string[];
   @Input() labels: string[];
@@ -248,11 +249,13 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
   }
 
-  getSafeUrl(image: string | SafeResourceUrl): SafeStyle {
-    return this.sanitization.bypassSecurityTrustStyle(this.helperService.getBackgroundUrl(image.toString()));
+  getSafeUrl(image: string | SafeResourceUrl): SafeResourceUrl {
+    if (!image) {return null}
+    return this.sanitization.bypassSecurityTrustResourceUrl(image as string);
   }
 
   getFileType(fileSource: string | SafeResourceUrl): string {
+    if (!fileSource) {return null}
     return this.helperService.getFileType(fileSource.toString());
   }
 
@@ -292,5 +295,9 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
 
   private getSafeStyle(value: string): SafeStyle {
     return this.sanitization.bypassSecurityTrustStyle(value);
+  }
+
+  onImageError(index): void {
+    this.images[index] = this.errorImages[index];
   }
 }

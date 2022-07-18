@@ -11,7 +11,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {DomSanitizer, SafeResourceUrl, SafeStyle} from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeStyle, SafeUrl } from '@angular/platform-browser';
 import {NgxGalleryService} from '../ngx-gallery.service';
 import {NgxGalleryOrderedImage} from '../ngx-gallery-ordered-image';
 import {NgxGalleryAction} from '../ngx-gallery-action';
@@ -111,7 +111,6 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
       }
       this.setAction(action);
     }
-
     this._selectedIndex = index;
   }
 
@@ -138,6 +137,7 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
 
   canChangeImage = true;
   public action: Orientation;
+  firstErr = true;
 
   isAnimating = false;
 
@@ -374,11 +374,13 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     }
   }
 
-  getSafeUrl(image: string | SafeResourceUrl): SafeStyle {
-    return this.sanitization.bypassSecurityTrustStyle(this.helperService.getBackgroundUrl(image.toString()));
+  getSafeUrl(image: string): SafeUrl {
+    if (!image) {return null}
+    return this.sanitization.bypassSecurityTrustUrl(image);
   }
 
   getFileType(fileSource: string) {
+    if (!fileSource) {return null}
     return this.helperService.getFileType(fileSource);
   }
 
@@ -391,4 +393,9 @@ export class NgxGalleryImageComponent implements OnInit, OnChanges {
     this.isAnimating = false;
     this.animating.emit(false);
   }
+
+  onImageError(index): void {
+    this.images[index].src = this.images[index].errorImage;
+  }
+
 }
